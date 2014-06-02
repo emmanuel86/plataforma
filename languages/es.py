@@ -334,6 +334,7 @@
 'Registration key': 'Llave de registro',
 'Registration needs verification': 'Registration needs verification',
 'Registration successful': 'Registro con éxito',
+'Regístrese': 'Regístrese',
 'reload': 'recargar',
 'Remember me (for 30 days)': 'Recuérdame (durante 30 días)',
 'remove compiled': 'eliminar compiladas',
