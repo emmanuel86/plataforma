@@ -96,3 +96,15 @@ db.define_table('ticket',
     Field('estado', 'boolean', default=True),
     auth.signature,
     )
+
+Plan = db.define_table('plan_servicio',
+            Field('nombre'),
+            Field('descripcion', 'text'),
+            Field('precio', 'decimal(8, 2)')
+    )
+
+Servicio = db.define_table('servicio',
+            Field('plan_id', Plan),
+            Field('fecha_vencimiento', 'date'),
+            Field('periodo')
+    )
