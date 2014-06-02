@@ -14,7 +14,11 @@ def inicio():
     return dict(user=user, ticket=grid)
 
 def servicios():
-	return dict()
+    grid = SQLFORM.grid(Servicio,
+                    editable=False,
+                    deletable=False,
+                    csv=False,)
+    return dict(grid=grid)
 
 def soporte():
 	grid = SQLFORM.grid(db.ticket,
