@@ -73,26 +73,35 @@ use_janrain(auth, filename='private/janrain.key')
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
 
-db.define_table('info_user_adicional',
-    Field('user_id', db.auth_user),
-    Field('imagen', 'upload'),
-    Field('dni'),
-    Field('email2'),
-    Field('sexo', 'list:string'),
-    Field('ocupacion'),
-    Field('pais'),
-    Field('provincia'),
-    Field('ciudad'),
-    Field('domicilio'),
-    Field('codigo_postal'),
-    Field('telefono')
+Userinfo = db.define_table('info_user_adicional',
+                Field('user_id', db.auth_user),
+                Field('imagen', 'upload'),
+                Field('dni'),
+                Field('email2'),
+                Field('sexo', 'list:string'),
+                Field('ocupacion'),
+                Field('pais'),
+                Field('provincia'),
+                Field('ciudad'),
+                Field('domicilio'),
+                Field('codigo_postal'),
+                Field('telefono')
                 )
 
 
-db.define_table('ticket',
-    Field('user_id', db.auth_user),
-    Field('asunto'),
-    Field('consulta', 'text'),
-    Field('estado', 'boolean', default=True),
-    auth.signature,
-    )
+Ticket = db.define_table('ticket',
+                Field('asunto'),
+                Field('consulta', 'text'),
+                Field('turno_respuesta', 'boolean'), # True side server - False side client
+                Field('departamento', 'reference auth_group'), # Mostar únicamente los que comienzan con tickets_
+                auth.signature,
+                format='%(asunto)s'
+                )
+
+
+TicketComment = db.define_table('ticket_comment',
+                        Field('ticket_id', 'reference tickets'),
+                        Field('cuerpo', 'text'),
+                        auth.signature,
+                        format='%(ticket_id)s')
+
