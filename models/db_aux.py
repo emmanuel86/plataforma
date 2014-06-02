@@ -3,7 +3,10 @@
 
 
 if db(db.auth_group.role.like('tickets_%')).isempty():
-    # Inicialización de los grupos.
+    # Inicialización de los bases:
+    #   * tickets_user
+    #   * tickets_admin
+    #   * tickets_soporte
     db.auth_group.insert(role='tickets_user',
                          description='Funciones básicas de tickets (crud)')
     db.auth_group.insert(role='tickets_admin',
