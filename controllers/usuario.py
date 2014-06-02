@@ -3,6 +3,10 @@ def inicio():
     user = db(db.auth_user.id == session.auth.user.id).select(db.auth_user.first_name,
                                                             db.auth_user.last_name,
                                                             db.auth_user.email).first()
+<<<<<<< HEAD
+=======
+    
+>>>>>>> faa2869d4dd6c7462fdd05fd89abd71a3fa07c11
     fields = [db.ticket.user_id]
     grid = SQLFORM.grid(db.ticket,
                         searchable=False,
