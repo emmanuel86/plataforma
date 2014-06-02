@@ -89,17 +89,20 @@ Userinfo = db.define_table('info_user_adicional',
                 )
 
 
+
 Plan = db.define_table('plan_servicio',
             Field('nombre'),
             Field('descripcion', 'text'),
             Field('precio', 'decimal(8, 2)')
     )
 
+
 Servicio = db.define_table('servicio',
             Field('plan_id', Plan),
             Field('fecha_vencimiento', 'date'),
             Field('periodo')
     )
+
 
 Ticket = db.define_table('ticket',
                 Field('asunto'),
@@ -112,8 +115,8 @@ Ticket = db.define_table('ticket',
 
 
 TicketComment = db.define_table('ticket_comment',
-                        Field('ticket_id', 'reference tickets'),
+                        Field('ticket_id', Ticket),
                         Field('cuerpo', 'text'),
                         auth.signature,
-                        format='%(ticket_id)s')
-
+                        format='%(ticket_id)s'
+                )
