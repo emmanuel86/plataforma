@@ -25,7 +25,6 @@ def inicio():
                         fields=fields,
                         searchable=False,
                         deletable=False,
-                        csv=False,
                         create=True,
                         csv=False)
     return dict(user=user, ticket=grid, systickets=systickets)
