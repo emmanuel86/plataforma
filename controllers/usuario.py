@@ -12,15 +12,39 @@ def inicio():
                         searchable=False,
                         deletable=False,
                         csv=False,
-                        create=True)
+                        create=True,)
     return dict(user=user, ticket=grid)
 
+
+@auth.requires_login()
 def servicios():
-    grid = SQLFORM.grid(Servicio,
+    user = auth.user
+    query = User_Servicio.created_by == user.id
+    fields = [User_Servicio.servicio_id,
+                User_Servicio.periodo_id,
+                User_Servicio.forma_pago_id,
+                User_Servicio.fecha_vencimiento,
+                User_Servicio.estado_id,
+                ]
+
+    if 'new' in request.args:
+        User_Servicio.user_id.default = user.id
+        User_Servicio.user_id.writable = False
+        User_Servicio.user_id.readable = False
+        User_Servicio.estado_id.default = 1
+        User_Servicio.estado_id.writable = False
+        User_Servicio.estado_id.readable = False
+
+    grid = SQLFORM.grid(query,
+                    fields=fields,
+                    create=True,
                     editable=False,
                     deletable=False,
-                    csv=False,)
-    return dict(grid=grid)
+                    searchable=False,
+                    csv=False)
+                    #orderby=User_Servicio.fecha_vencimiento)
+            
+    return dict(user=user, grid=grid)
 
 def soporte():
 	grid = SQLFORM.grid(db.ticket,

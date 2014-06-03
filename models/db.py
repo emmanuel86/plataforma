@@ -90,24 +90,36 @@ Userinfo = db.define_table('info_user_adicional',
 
 
 
-Plan = db.define_table('plan_servicio',
+Forma_Pago = db.define_table('forma_pago',
+            Field('descripcion'),
+            format='%(descripcion)s'
+    )
+
+Servicio = db.define_table('servicio',
             Field('nombre'),
             Field('descripcion', 'text'),
             Field('precio', 'decimal(8, 2)'),
             format='%(nombre)s'
     )
 
-
-Servicio = db.define_table('servicio',
-            Field('auth_user_id', db.auth_user),
-            Field('plan_id', Plan),
-            Field('fecha_vencimiento', 'date'),
-            Field('periodo')
+Periodo = db.define_table('periodo',
+            Field('descripcion'),
+            format='%(descripcion)s'
     )
 
+EstadoServicio = db.define_table('estado_servicio',
+            Field('descripcion'),
+            format='%(descripcion)s'
+    )
+
+
 User_Servicio = db.define_table('user_servicio',
-            Field('auth_user_id', db.auth_user),
+            Field('user_id', db.auth_user),
             Field('servicio_id', Servicio),
+            Field('periodo_id', Periodo),
+            Field('forma_pago_id', Forma_Pago),
+            Field('fecha_vencimiento', 'date'),
+            Field('estado_id', EstadoServicio),
             auth.signature,
     )
 

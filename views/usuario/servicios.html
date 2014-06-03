@@ -1,3 +1,8 @@
 {{extend 'layout.html'}}
-<h3>Servicios Contratados</h3>
-{{=grid}}
+<div class="well">
+		<h3>Servicios Contratados</h3>
+		<h4>Cliente: {{=user.first_name}}, {{=user.last_name}}</h4>
+		{{=grid}}
+</div>
+
+<div><a class="btn btn-primary" onclick="location.href='{{=URL(r=request,f='tarea')}}'"><i class="icon-home icon-white"></i> Comprar Un Servicio</a>
