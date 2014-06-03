@@ -25,16 +25,12 @@ def inicio():
                         fields=fields,
                         searchable=False,
                         deletable=False,
-<<<<<<< HEAD
                         csv=False,
-                        create=True,)
-    return dict(user=user, ticket=grid)
-=======
+                        create=True,
                         csv=False)
     return dict(user=user, ticket=grid, systickets=systickets)
 
 
->>>>>>> 1fded41604900d32b99fcbbf72f8b9fc6b771b24
 
 
 @auth.requires_login()
