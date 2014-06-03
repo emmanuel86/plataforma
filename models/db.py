@@ -116,6 +116,7 @@ Ticket = db.define_table('ticket',
                 Field('asunto'),
                 Field('consulta', 'text'),
                 Field('turno_respuesta', 'boolean'), # True side server - False side client
+                Field('estado', 'boolean', default=True), # True: Abierto - False: Cerrado
                 Field('departamento', 'reference auth_group'), # Mostar únicamente los que comienzan con tickets_
                 auth.signature,
                 format='%(asunto)s'
