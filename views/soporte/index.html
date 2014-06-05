@@ -1,0 +1,49 @@
+{{extend 'layout.html'}}
+
+<div class="well">
+
+    <div class="page-header">
+        <h3>Tickets</h3>
+    </div>
+
+    <!--
+
+    #############  CREATE_FORM  #############
+    
+    -->
+    {{if grid.create_form:}}
+
+        {{=grid}}
+
+
+    <!--
+
+    #############  UPDATE_FORM  #############
+    
+    -->
+    {{elif grid.update_form:}}
+
+
+
+    <!--
+
+    #############  CREATE_FORM  #############
+    
+    -->
+    {{elif grid.view_form:}}
+
+        {{=grid}}
+
+        <h3>{{=T('Response')}}</h3>
+        {{=grid.view_form.attributes.get('comment_ticket')(request.args[-1])}}
+
+
+    {{else:}}
+
+        {{=grid}}
+
+    {{pass}}
+
+
+
+</div>

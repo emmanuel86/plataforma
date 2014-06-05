@@ -25,6 +25,7 @@ def search_form(self,url):
         _method="GET",_action=url) 
     return form
 
+
 def search_query(tableid,search_text,fields): 
     words= search_text.split(' ') if search_text else [] 
     query=tableid<0#empty query 
@@ -35,3 +36,9 @@ def search_query(tableid,search_text,fields):
         query=query|new_query 
     return query
 #Fin de las funciones
+
+
+def get_name(user):
+    if user.first_name:
+        return '%s, %s' % (user.first_name, user.last_name)
+    else: return 'anonymus'

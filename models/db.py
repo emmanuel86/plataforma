@@ -121,15 +121,17 @@ User_Servicio = db.define_table('user_servicio',
             Field('fecha_vencimiento', 'date'),
             Field('estado_id', EstadoServicio),
             auth.signature,
+            format='%(servicio_id)s'
     )
 
 
 Ticket = db.define_table('ticket',
                 Field('asunto'),
+                Field('user_servicio_id', User_Servicio),
+                Field('departamento', 'reference auth_group'), # Mostar únicamente los que comienzan con tickets_
                 Field('consulta', 'text'),
                 Field('turno_respuesta', 'boolean'), # True side server - False side client
                 Field('estado', 'boolean', default=True), # True: Abierto - False: Cerrado
-                Field('departamento', 'reference auth_group'), # Mostar únicamente los que comienzan con tickets_
                 auth.signature,
                 format='%(asunto)s'
                 )
