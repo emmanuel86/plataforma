@@ -30,8 +30,8 @@ if auth.is_logged_in():
   response.menu = [
       (T('Home'), False, URL('default', 'index'), []),
       (T('Usuario'), False, URL('usuario', 'inicio'), []),
-      (T('Servicios'), False, URL('usuario', 'servicios'), []),
-      (T('Soporte'), False, URL('usuario', 'soporte'), []),
+      (T('Servicios'), False, URL('servicios', 'index'), []),
+      (T('Soporte'), False, URL('soporte', 'index'), []),
       (T('Perfil'), False, URL('usuario', 'perfil'), [])
   ]
 

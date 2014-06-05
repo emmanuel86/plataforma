@@ -5,7 +5,10 @@ def btn_anular_pedido(row):
     if row.estado_id == 1:
         btn = A(I(_class='icon-thumbs-down'),
                     ' Anular Pedido',
-                    _href=URL(c='servicios', f='anular_pedido', args=[row.id]),
+                    _href=URL(c='servicios', 
+                              f='anular_pedido',
+                              args=[row.id],
+                              user_signature=True),
                     _class='btn')
     return btn
 
@@ -13,7 +16,9 @@ def btn_anular_pedido(row):
 def btn_pagar(row):
     btn = A(I(_class='icon-thumbs-up'),
                 ' Pagar',
-                _href=URL(c='servicios', f='anular_pedido', args=[row.id]),
+                _href=URL(c='servicios',
+                          f='pagar',
+                          args=[row.id]),
                 _class='btn')
     return btn
 
@@ -39,6 +44,7 @@ def index():
                     deletable=False,
                     details=False,
                     searchable=False,
+                    user_signature=True,
                     csv=False,
                     links=[lambda r: btn_anular_pedido(r),
                             lambda r: btn_pagar(r)])
@@ -61,13 +67,18 @@ def comprar():
         User_Servicio.fecha_vencimiento.readable = False
     formulario = SQLFORM(User_Servicio)
     if formulario.process().accepted:
-        response.flash = 'formulario aceptado'
+        response.flash = 'pedido enviado.'
     elif formulario.errors:
-        response.flash = 'el formulario tiene errores'
+        response.flash = 'el pedido tiene errores.'
     else:
-        response.flash = 'por favor complete el formulario'
+        response.flash = 'por favor complete el formulario.'
     return dict(formulario=formulario)
 
+def pagar():
+    return dict()
+
+
+@auth.requires_signature()
 def anular_pedido():
     anular = crud.delete(User_Servicio,
                         request.args[0],
