@@ -115,6 +115,7 @@ EstadoServicio = db.define_table('estado_servicio',
 
 User_Servicio = db.define_table('user_servicio',
             Field('user_id', db.auth_user),
+            Field('nombre', unique=True),
             Field('servicio_id', Servicio),
             Field('periodo_id', Periodo),
             Field('forma_pago_id', Forma_Pago),
