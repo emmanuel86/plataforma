@@ -7,7 +7,8 @@
 
 ### Labels
 
-# Tabla Servicio
+# Tabla User_Servicio
+User_Servicio.nombre.label = 'Nombre de Servicio'
 User_Servicio.user_id.label = 'Cliente'
 User_Servicio.servicio_id.label = 'Servicio'
 User_Servicio.fecha_vencimiento.label = 'Fecha de Vencimiento'

@@ -23,6 +23,7 @@ def inicio():
                                     csv=False)
     return dict(user=user, ticket=ultimos_tickets)
 
+<<<<<<< HEAD
 
 
 @auth.requires_login()
@@ -55,6 +56,13 @@ def servicios():
             
     return dict(user=user, grid=grid)
 
+def soporte():
+	grid = SQLFORM.grid(db.ticket,
+                        searchable=False,
+                        deletable=False,
+                        csv=False,
+                        create=True)
+	return dict(ticket=grid)
 
 
 def perfil():

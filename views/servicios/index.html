@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<div class="well">
+		<h3>Servicios Contratados</h3>
+		<h4>Cliente: {{=user.first_name}}, {{=user.last_name}}</h4>
+		{{=A(I(_class='icon-shopping-cart icon-white'),
+				' Comprar Un Servicio',
+                _href=URL(r=request,f='comprar'),
+                _class='btn btn-primary')}}
+		{{=grid}}
+		{{=A(I(_class='icon-shopping-cart icon-white'),
+				' Comprar Un Servicio',
+                _href=URL(r=request,f='comprar'),
+                _class='btn btn-primary')}}
+</div>
